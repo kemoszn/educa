@@ -2,6 +2,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('subject/<slug:subject>/',
+        views.CourseListView.as_view(),
+        name='course_list_subject'),
+    path('<slug:slug>/',
+        views.CourseDetailView.as_view(),
+        name='course_detail'),
     path('module/order/',
         views.ModuleOrderView.as_view(),
         name='module_order'),
@@ -35,4 +41,6 @@ urlpatterns = [
     path('<pk>/delete/',
         views.CourseDeleteView.as_view(),
         name='course_delete'),
+
+    
 ]
