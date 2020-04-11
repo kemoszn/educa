@@ -156,7 +156,6 @@ input, select, textarea {
     font-family:'Roboto', sans-serif;
     float:left;
     clear:both;
-    width:300px;
 }
 
 textarea {
@@ -169,7 +168,7 @@ select {
 
 input[type=submit], a.button {
     border-radius:5px;
-    background:#4dcc43;
+    background: #007bff;
     color:#fff;
     font-size:16px;
     text-transform:uppercase;
@@ -179,13 +178,13 @@ input[type=submit], a.button {
 }
 
 a.secondary-button {
-    border:3px solid #4dcc43;
+    border:3px solid #007bff;
     padding:10px 20px;
     margin:10px 0;
 }
 
 input[type=submit]:hover, a.button:hover {
-    background:#3fad37;
+    background:#007bff;
 }
 
 ul#course-modules {
@@ -224,9 +223,11 @@ ul#course-modules li:hover {
 }
 
 #module-contents input[type=submit] {
-    color:#3fad37;
-    background:none;
-    margin:-20px 0 0;
+    border-radius:1px;
+    font-size:16px;
+    color: #dc3545;
+    background: #fff;
+    margin: -17px 8px 0;
     padding:0;
     float:left;
     text-transform:none;

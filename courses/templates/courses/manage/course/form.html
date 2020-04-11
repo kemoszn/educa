@@ -7,19 +7,23 @@ Create a new course
 {% endif %}
 {% endblock %}
 {% block content %}
-<h1>
-    {% if object %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb"  style="font-size: 20px;">
+    <li class="breadcrumb-item"><a href="{% url "course_list" %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">Course Mangement</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{% if object %}
     Edit course "{{ object.title }}"
     {% else %}
     Create a new course
     {% endif %}
-</h1>
-<div class="module">
+</li>
+  </ol>
+</nav>
+    
     <h2>Course info</h2>
     <form action="." method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <p><input type="submit" value="Save course"></p>
     </form>
-</div>
 {% endblock %}

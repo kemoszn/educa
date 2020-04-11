@@ -1,12 +1,28 @@
 {% extends "base.html" %}
 {% block title %}Delete course{% endblock %}
 {% block content %}
-<h1>Delete course "{{ object.title }}"</h1>
-<div class="module">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb"  style="font-size: 20px;">
+    <li class="breadcrumb-item"><a href="{% url "course_list" %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">Course Mangement</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Delete course "{{ object.title }}"</li>
+  </ol>
+</nav>
+<div class="card">
+  <div class="card-body">
+  <p class="card-text">
     <form action="" method="post">
         {% csrf_token %}
         <p>Are you sure you want to delete "{{ object }}"?</p>
-        <input type="submit" class"button" value="Confirm">
+        <input type="submit" class="button" value="Confirm"> &nbsp;
+        <a href="{% url "manage_course_list" %}"> <button type="button" class="btn btn-danger" style="border-radius:5px;
+    font-size:16px;
+    text-transform:uppercase;
+    border:none;
+    padding:10px 20px;
+    margin:20px 0;">Cancel </button></a>
     </form>
+    </p>
+    </div>
 </div>
 {% endblock %}
