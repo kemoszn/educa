@@ -23,6 +23,12 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('accounts/password_change/',
+        auth_views.PasswordChangeView.as_view(),
+        name='password_change'),
+    path('accounts/password_change/done/',
+        auth_views.PasswordChangeDoneView.as_view(),
+        name='password_change_done'),
     path('admin/', admin.site.urls),
     path('courses/', include('courses.urls')),
     path('', CourseListView.as_view(), name='course_list'),

@@ -3,20 +3,20 @@
 {% block title %}
 {{ object.title }}
 {% endblock %}
+
 {% block content %}
 <button type="button" class="btn btn-light"> <a href="{% url "student_course_list" %}">
 <svg class="bi bi-arrow-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M5.854 4.646a.5.5 0 010 .708L3.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/>
   <path fill-rule="evenodd" d="M2.5 8a.5.5 0 01.5-.5h10.5a.5.5 0 010 1H3a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
 </svg>
-Go back to courses </a></button> <br> <br>
-
+Go back </a></button> <br> <br>
 <div class="accordion" id="accordionExample">
 {% for m in object.modules.all %}
   <div class="card">
-    <div class="card-header" id="heading{{ m.id }}">
+    <div class="card-header" id="headingOne">
       <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ m.id }}" aria-expanded="true" aria-controls="collapse{{ m.id }}">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           <li style="list-style-type: none;" data-id="{{ m.id }}" {% if m == module %} class="selected" {% endif %}>
             <a href="{% url "student_course_detail_module" object.id m.id %}">
                 <span>
@@ -28,20 +28,7 @@ Go back to courses </a></button> <br> <br>
         </button>
       </h2>
     </div>
-
-    <div id="collapse{{ m.id }}" {% if m == module %}  class="collapse show" {% else %} class="collapse hide" {% endif %} aria-labelledby="heading{{ m.id }}" data-parent="#accordionExample">
-      <div class="card-body">
-    {% cache 600 module_contents module %}
-        {% for content in module.contents.all %}
-            {% with item=content.item %}
-                <h4>{{ item.title }}</h4>
-            {{ item.render }}
-            {% endwith %}
-        {% endfor %}
-    {% endcache %}
-      </div>
-</div>
-</div>
-{% endfor %}
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}

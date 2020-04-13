@@ -7,19 +7,22 @@ Add a new content
 {% endif %}
 {% endblock %}
 {% block content %}
-<h1>
-    {% if object %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb"  style="font-size: 20px;">
+    <li class="breadcrumb-item"><a href="{% url "course_list" %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">Course Mangement</a></li>
+    <li class="breadcrumb-item active" aria-current="page"> {% if object %}
     Edit content "{{ object.title }}"
     {% else %}
     Add a new content
-    {% endif %}
-</h1>
-<div class="module">
+    {% endif %}</li>
+  </ol>
+</nav>
+
     <h2>Course info</h2>
     <form action="" method="post" enctype="multipart/form-data">
         {{ form.as_p }}
         {% csrf_token %}
         <p><input type="submit" value="Save content"></p>
     </form>
-</div>
 {% endblock %}
