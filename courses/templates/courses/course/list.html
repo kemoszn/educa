@@ -39,7 +39,9 @@ All courses
         <a href="{% url "course_list_subject" subject.slug %}">
             {{ subject }}</a>.
         {{ course.total_modules }} modules.
-        Instructor: {{ course.owner.get_full_name }}
+        Instructors: {% for m in course.instructors.all  %} 
+        {{ m.name }}
+        {% endfor %}
     </p>
     {% endwith %}
     {% endfor %}

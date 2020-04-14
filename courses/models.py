@@ -5,6 +5,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from .fields import OrderField
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
+from .slug import unique_slugify
 
 
 class Subject(models.Model):
@@ -16,7 +17,17 @@ class Subject(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def save(self, **kwargs):
+        slug = '%s' % (self.title)
+        unique_slugify(self, slug)
+        super(Subject, self).save()
 
+class Instructor(models.Model):
+    name = models.CharField(max_length=200, blank=False)
+
+    def __str__(self):
+        return self.name
 
 class Course(models.Model):
     owner = models.ForeignKey(User,related_name='courses_created',
@@ -26,6 +37,10 @@ class Course(models.Model):
                             on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
+    instructor = models.ForeignKey(Instructor, 
+                            related_name='instructor',
+                            on_delete=models.CASCADE,
+                            blank=True)
     overview = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     students = models.ManyToManyField(User,
@@ -38,6 +53,10 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
+    def save(self, **kwargs):
+        slug = '%s' % (self.title)
+        unique_slugify(self, slug)
+        super(Course, self).save()
 
 class Module(models.Model):
     course = models.ForeignKey(Course,

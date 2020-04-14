@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block title %}
 Edit "{{ course.title }}"
 {% endblock %}
@@ -7,14 +8,15 @@ Edit "{{ course.title }}"
   <ol class="breadcrumb"  style="font-size: 20px;">
     <li class="breadcrumb-item"><a href="{% url "course_list" %}">Home</a></li>
     <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">Course Mangement</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Edit "{{ course.title }}"</li>
+    <li class="breadcrumb-item active" aria-current="page">Edit "{{ course.title }}" modules</li>
   </ol>
 </nav>
-    <h2>Course modules</h2>
-    <form action="" method="post">
+ <br>
+    <form action="." method="post">
         {{ formset }}
         {{ formset.management_form }}
         {% csrf_token %}
-        <input type="submit" class="button" value="Save modules">
+        <h1 style="background-color: #fff"></h1><button type="submit" 
+        class="btn btn-primary btn-lg" style="padding: top right bottom left;">Save modules</button>
     </form>
 {% endblock %}

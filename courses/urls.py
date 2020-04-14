@@ -2,6 +2,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('new/subject/', 
+        views.SubjectCreationView.as_view(),
+        name='subject_create'),
+    path('new/instructor/', 
+        views.InstructorCreationView.as_view(),
+        name='instructor_create'),
     path('mine/', 
         views.ManageCourseListView.as_view(),
         name='manage_course_list'),

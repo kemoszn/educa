@@ -7,6 +7,10 @@
     <li class="breadcrumb-item active" aria-current="page">Course Management</li>
   </ol>
 </nav>
+<a href="{% url 'student_registration' %}" class="btn btn-secondary">+ Student</a>
+<a href="{% url 'subject_create' %}" class="btn btn-secondary">+ Subject</a>
+<a href="{% url 'instructor_create' %}" class="btn btn-secondary">+ Instructor</a>
+<br><br>
 {% for course in object_list %}
 <div class="card">
   <div class="card-body">

@@ -1,6 +1,10 @@
 from django.contrib import admin
-from .models import Subject, Course, Module
+from .models import Subject, Course, Module, Instructor
 
+@admin.register(Instructor)
+class InstructorAdmin(admin.ModelAdmin):
+    list_display = ['name']
+ 
 
 @admin.register(Subject)
 class SubjectAdmin(admin.ModelAdmin):

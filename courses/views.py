@@ -5,7 +5,7 @@ from .models import Course
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic.base import TemplateResponseMixin, View
-from .forms import ModuleFormSet
+from .forms import ModuleFormSet, SubjectCreationForm, InstructorCreationForm
 from django.forms.models import modelform_factory
 from django.apps import apps
 from .models import Module, Content
@@ -14,28 +14,42 @@ from django.db.models import Count
 from .models import Subject
 from django.views.generic.detail import DetailView
 from django.core.cache import cache
+from django.contrib.auth.mixins import UserPassesTestMixin
+
+def superuser_required():
+    def wrapper(wrapped):
+        class WrappedClass(UserPassesTestMixin, wrapped):
+            def test_func(self):
+                return self.request.user.is_superuser
+
+        return WrappedClass
+    return wrapper
 
 class OwnerMixin(object):
     def get_queryset(self):
         qs = super(OwnerMixin, self).get_queryset()
         return qs.filter(owner=self.request.user)
 
+
 class OwnerEditMixin(object):
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super(OwnerEditMixin, self).form_valid(form)
 
+
 class OwnerCourseMixin(OwnerMixin, LoginRequiredMixin):
     model = Course
-    fields = ['subject', 'title', 'slug', 'overview']
+    fields = ['subject', 'instructor','title', 'students', 'overview']
     success_url = reverse_lazy('manage_course_list')
 
+
 class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
-    fields = ['subject', 'title', 'slug', 'overview']
+    fields = ['subject', 'instructor','title', 'students', 'overview']
     success_url = reverse_lazy('manage_course_list')
     template_name = 'courses/manage/course/form.html'
 
-class ManageCourseListView(OwnerCourseMixin, ListView):
+@superuser_required()
+class ManageCourseListView(OwnerCourseMixin, LoginRequiredMixin, ListView):
     template_name = 'courses/manage/course/list.html'
 
 class CourseCreateView(PermissionRequiredMixin, OwnerCourseEditMixin, CreateView):
@@ -199,3 +213,25 @@ class CourseListView(TemplateResponseMixin, View):
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/course/detail.html'
+
+@superuser_required()
+class SubjectCreationView(CreateView):
+    template_name = 'courses/course/new_subject.html'
+    form_class = SubjectCreationForm
+    success_url = reverse_lazy('manage_course_list')
+
+    def form_valid(self, form):
+        result = super(SubjectCreationView,
+                    self).form_valid(form)
+        return result
+
+@superuser_required()
+class InstructorCreationView(CreateView):
+    template_name = 'courses/course/new_instructor.html'
+    form_class = InstructorCreationForm
+    success_url = reverse_lazy('manage_course_list')
+
+    def form_valid(self, form):
+        result = super(InstructorCreationView,
+                    self).form_valid(form)
+        return result
