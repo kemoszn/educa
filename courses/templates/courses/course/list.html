@@ -7,43 +7,50 @@ All courses
 {% endif %}
 {% endblock %}
 {% block content %}
-<h1>
-    {% if subject %}
+
+  <!--  {% if subject %}
     {{ subject.title }} courses
     {% else %}
     All courses
     {% endif %}
-</h1>
-<div class="contents">
-    <h3>Subjects</h3>
-    <ul id="modules">
-        <li {% if not subject %}class="selected" {% endif %}>
-            <a href="{% url "course_list" %}">All</a>
-        </li>
-        {% for s in subjects %}
-        <li {% if subject == s %}class="selected" {% endif %}>
-            <a href="{% url "course_list_subject" s.slug %}">
-                {{ s.title }}
-                <br><span>{{ s.total_courses }} courses</span>
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
+    -->
+    <div class="container">
+    <div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-12">
+<form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" style="width: 75%;"type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    </div>
+    </div>
+    </div>
+    <br>
+    <div class="container">
+<a href="{% url "course_list" %}"><button type="button" style="border: 1.5px solid #007bff;" class="btn btn-outline-primary">All</button></a>
+{% for sub in subjects %}
+<a href="{% url "course_list_subject" sub.slug %}"><button type="button" style="border: 1.5px solid #6c757d;;"  class="btn btn-outline-secondary">{{ sub.title }}</button></a>
+{% endfor %}
 </div>
-<div class="module">
-    {% for course in courses %}
+<br><br>
+<div class="container" style="clear:both;">
+  <div class="row" class="clearfix">
+{% for course in courses %}
     {% with subject=course.subject %}
-    <h3><a href="{% url "course_detail" course.slug %}">
-            {{ course.title }}</a></h3>
-    <p>
-        <a href="{% url "course_list_subject" subject.slug %}">
-            {{ subject }}</a>.
-        {{ course.total_modules }} modules.
-        Instructors: {% for m in course.instructors.all  %} 
-        {{ m.name }}
-        {% endfor %}
-    </p>
-    {% endwith %}
-    {% endfor %}
+        <div class="col-sm-4">
+        <div class="clearfix"></div>
+<div class="card" style="width: 18rem;  overflow: hidden;">
+  <img class="card-img-top" style="width: 286px; height: 180px;"
+  src="https://www.hklaw.com/-/media/images/services/practices/technology-and-cybersecurity/blockchain-technology/blockchain_law_banner.jpg" alt="Card image cap">
+  <div class="card-body" class="clearfix">
+    <h5 class="card-title">{{ course.title }} - {{ subject }}</h5>
+    <p class="card-text" style="clear:both;"><b>Instructor:</b> {{ course.instructor }}</p>
+    <a href="{% url "course_detail" course.slug %}" class="btn btn-primary">View course</a>
+  </div>
+  
 </div>
+<br>
+</div> 
+    {% endwith %}
+{% endfor %}
+    </div> </div>
 {% endblock %}
