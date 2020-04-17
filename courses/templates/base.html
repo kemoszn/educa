@@ -15,14 +15,14 @@
 </head>
 
 <body>
-<div style="background-color: yellow!important;" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-normal"><b>EducaCenter</b></h5>
+<div style="background-color: #2E2E3A!important;" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal"><b style="color: #fff;">EducaCenter</b></h5>
   <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" href="#">About Us</a>
-    <a class="p-2 text-dark" href="#">Contact</a>
-    <a class="p-2 text-dark" href="{% url "student_course_list" %}">Learn</a>
+    <a class="p-2 text-lights" href="{% url 'course_list' %}">Browse</a>
+    <a class="p-2 text-lights" href="#">Contact</a>
+    <a class="p-2 text-lights" href="{% url "student_course_list" %}">Learn</a>
     {% if request.user.is_superuser %}
-    <a class="p-2 text-dark" href="{% url "manage_course_list" %}">Manage</a> 
+    <a style="color: #fff; "class="p-2 text-lights" href="{% url "manage_course_list" %}">Manage</a> 
     {% endif %}
   </nav>
   {% if request.user.is_authenticated %}
@@ -55,14 +55,14 @@
   width: 100%;
   height: 60px; /* Set the fixed height of the footer here */
   line-height: 60px; /* Vertically center the text there */
-  background-color: yellow!important;
-  color: black;
+  background-color: #2E2E3A!important;
+  color: #fff;
 ">
       <div class="container" style="width: auto;
   max-width: 680px;
   padding: 0 15px;
   text-align: center;">
-        <span style="text-align: center; color:black;"><b>EducaCenter 2020. All rights reserved. </b></span>
+        <span style="text-align: center; color:#fff;"><b>EducaCenter 2020. All rights reserved. </b></span>
       </div>
     </footer>
 

@@ -290,3 +290,6 @@ ul#course-modules li:hover {
 	line-height: 0;
 	height: 0;
 }
+.text-lights {
+    color: #ffffff!important;
+}

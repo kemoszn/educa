@@ -14,7 +14,7 @@ All courses
     <div class="col-sm-6 col-md-12 col-lg-12">
 <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="get">
       <input name="q" class="form-control mr-sm-2" style="width: 75%;" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="border: 1.5px solid #007bff;">Search</button>
     </form>
     </div>
     </div>
@@ -22,10 +22,10 @@ All courses
     <br>
     <div class="container">
 <a href="{% url "course_list" %}"><button type="button" 
-style="border: 1.5px solid #007bff;" class="btn btn-outline-primary">All</button></a>
+style="border: 1.5px solid #007bff;" {% if subject %} class="btn btn-outline-primary" {% else %} class="btn btn-primary" {% endif %}>All</button></a>
 {% for sub in subjects %}
 <a href="{% url "course_list_subject" sub.slug %}"><button type="button" 
-style="border: 1.5px solid #6c757d;;"  class="btn btn-outline-secondary">{{ sub.title }}</button></a>
+style="border: 1.5px solid #6c757d;;" {% if subject %} {% if subject.title == sub.title %} class="btn btn-secondary" {% else %} class="btn btn-outline-secondary" {% endif %} {% endif %} class="btn btn-outline-secondary">#{{ sub.title }}</button></a>
 {% endfor %}
 </div>
 <br><br>

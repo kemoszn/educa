@@ -7,31 +7,32 @@ Search Result
     <div class="row">
     <div class="col-sm-6 col-md-6 col-lg-12">
 <form action="{% url 'search_results' %}" class="form-inline my-2 my-lg-0" method="get">
-      <input name="q" class="form-control mr-sm-2" style="width: 75%;"type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input name="q" class="form-control mr-sm-2" style="width: 75%;"type="search"
+       placeholder="{{ object_list.query }}" aria-label="Search" value="{{object_list.query}}">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="border: 1.5px solid #007bff;">Search</button>
     </form>
     </div>
     </div>
     </div>
     <br>
-    {% if object_list.count == 0 %}
-    No hits try a different search phrase
+    {% if object_list.object_list.count == 0 %}
+    No hits for "{{ object_list.query }}" try a different search phrase
     {% else %}
-    About {{ object_list.count }} search result{% if object_list.count > 1 %}s{% endif %}
+    About <b style="color: #007bff;">{{ object_list.object_list.count }}</b> search result{% if object_list.object_list.count > 1 %}s{% endif %} for "{{ object_list.query }}"
     <br><br>
-    {% if object_list.count > 0 %}
+    {% if object_list.object_list.count > 0 %}
     <div class="container" style="clear:both;">
   <div class="row" class="clearfix">
-{% for course in object_list %}
+{% for i in object_list.object_list %}
         <div class="col-sm-4">
         <div class="clearfix"></div>
 <div class="card" style="width: 18rem;  overflow: hidden;">
   <img class="card-img-top" style="width: 286px; height: 180px;"
   src="https://www.hklaw.com/-/media/images/services/practices/technology-and-cybersecurity/blockchain-technology/blockchain_law_banner.jpg" alt="Card image cap">
   <div class="card-body" class="clearfix">
-    <h5 class="card-title">{{ course.title }} - {{ course.subject }}</h5>
-    <p class="card-text" style="clear:both;"><b>Instructor:</b> {{ course.instructor }}</p>
-    <a href="{% url "course_detail" course.slug %}" class="btn btn-primary">View course</a>
+    <h5 class="card-title">{{ i.title }} - {{ i.subject }}</h5>
+    <p class="card-text" style="clear:both;"><b>Instructor:</b> {{ i.instructor }}</p>
+    <a href="{% url "course_detail" i.slug %}" class="btn btn-primary">View course</a>
   </div>
   
 </div>
