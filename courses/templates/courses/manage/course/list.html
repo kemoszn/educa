@@ -7,9 +7,10 @@
     <li class="breadcrumb-item active" aria-current="page">Course Management</li>
   </ol>
 </nav>
-<a href="{% url 'student_registration' %}" class="btn btn-secondary">+ Student</a>
-<a href="{% url 'subject_create' %}" class="btn btn-secondary">+ Subject</a>
-<a href="{% url 'instructor_create' %}" class="btn btn-secondary">+ Instructor</a>
+<a href="{% url 'course_create' %}" class="btn btn-outline-secondary">+ Course</a>
+<a href="{% url 'student_registration' %}" class="btn btn-outline-secondary">+ Student</a>
+<a href="{% url 'subject_create' %}" class="btn btn-outline-secondary">+ Subject</a>
+<a href="{% url 'instructor_create' %}" class="btn btn-outline-secondary">+ Instructor</a>
 <br><br>
 {% for course in object_list %}
 <div class="card">
@@ -28,9 +29,46 @@
 {% empty %}
     <p>You haven't created any courses yet.</p>
     {% endfor %}
-    
-        <a href="{% url "course_create" %}" class="btn btn-primary">Create new
-            course</a>
-    
+
+  <br>
+  <div class="container">
+  <div class="row justify-content-center">
+  <nav aria-label="Page navigation example" style="justify-content: center;">
+  {% if is_paginated %}
+  <ul class="pagination justify-content-end">
+  {% if page_obj.has_previous %}
+  <li class="page-item">
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+    </li>
+  {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+  {% endif %}
+  {% for i in paginator.page_range %}
+  {% if page_obj.number == i %}
+    <li class="page-item active" style="z-index: 0;">
+      <a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a>
+    </li>
+  {% else %}
+    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+  {% endif %}
+  {% endfor %}
+  {% if page_obj.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#">Next</a>
+    </li>
+    {% endif %}
+  </ul>
+{% endif %}
+</nav>
+</div>
+</div>
+<br>
+        
 {% endblock %}
 

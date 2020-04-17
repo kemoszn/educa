@@ -15,6 +15,9 @@ from .models import Subject
 from django.views.generic.detail import DetailView
 from django.core.cache import cache
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.db.models import Q
+from django.shortcuts import render_to_response
+from django.core.paginator import Paginator
 
 def superuser_required():
     def wrapper(wrapped):
@@ -51,6 +54,7 @@ class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
 @superuser_required()
 class ManageCourseListView(OwnerCourseMixin, LoginRequiredMixin, ListView):
     template_name = 'courses/manage/course/list.html'
+    paginate_by = 4
 
 class CourseCreateView(PermissionRequiredMixin, OwnerCourseEditMixin, CreateView):
     permission_required = 'courses.add_course'
@@ -188,12 +192,15 @@ class CourseListView(TemplateResponseMixin, View):
     template_name = 'courses/course/list.html'
     def get(self, request, subject=None):
         subjects = cache.get('all_subjects')
-        color = ['primary','secondary']
         courses = Course.objects.all()
         if not subjects:
             subjects = Subject.objects.annotate(
                                             total_courses=Count('courses'))
             cache.set('all_subjects', subjects)
+            courses = Course.objects.all()
+            paginator = Paginator(courses, 6) 
+            page_number = request.GET.get('page')
+            page_obj = paginator.get_page(page_number)
         all_courses = Course.objects.annotate(
                                             total_modules=Count('modules'))
         if subject:
@@ -204,15 +211,20 @@ class CourseListView(TemplateResponseMixin, View):
                 courses = all_courses.filter(subject=subject)
                 cache.set(key, courses)
                 cache.set('all_courses', courses)
+                paginator = Paginator(courses, 6) 
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
             else:
                 courses = cache.get('all_courses')
                 if not courses:
                     courses = all_courses
                     cache.set('all_courses', courses)
+
         return self.render_to_response({'subjects': subjects,
                                         'subject': subject,
                                         'courses': courses,
-                                        'color':color})
+                                        'page_obj': page_obj,
+                                        'paginator': paginator})
 
 class CourseDetailView(DetailView):
     model = Course
@@ -238,4 +250,14 @@ class InstructorCreationView(CreateView):
     def form_valid(self, form):
         result = super(InstructorCreationView,
                     self).form_valid(form)
+        return result
+
+class SearchResultsView(ListView, View):
+    model = Course
+    template_name = 'courses/course/search_results.html'
+    def get_queryset(self): 
+        query = self.request.GET.get('q')
+        result = Course.objects.filter(
+            Q(title__icontains=query)
+        )
         return result

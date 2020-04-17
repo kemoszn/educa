@@ -8,33 +8,30 @@ All courses
 {% endblock %}
 {% block content %}
 
-  <!--  {% if subject %}
-    {{ subject.title }} courses
-    {% else %}
-    All courses
-    {% endif %}
-    -->
+
     <div class="container">
     <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-12">
-<form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" style="width: 75%;"type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <div class="col-sm-6 col-md-12 col-lg-12">
+<form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="get">
+      <input name="q" class="form-control mr-sm-2" style="width: 75%;" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
     </form>
     </div>
     </div>
     </div>
     <br>
     <div class="container">
-<a href="{% url "course_list" %}"><button type="button" style="border: 1.5px solid #007bff;" class="btn btn-outline-primary">All</button></a>
+<a href="{% url "course_list" %}"><button type="button" 
+style="border: 1.5px solid #007bff;" class="btn btn-outline-primary">All</button></a>
 {% for sub in subjects %}
-<a href="{% url "course_list_subject" sub.slug %}"><button type="button" style="border: 1.5px solid #6c757d;;"  class="btn btn-outline-secondary">{{ sub.title }}</button></a>
+<a href="{% url "course_list_subject" sub.slug %}"><button type="button" 
+style="border: 1.5px solid #6c757d;;"  class="btn btn-outline-secondary">{{ sub.title }}</button></a>
 {% endfor %}
 </div>
 <br><br>
 <div class="container" style="clear:both;">
   <div class="row" class="clearfix">
-{% for course in courses %}
+{% for course in page_obj %}
     {% with subject=course.subject %}
         <div class="col-sm-4">
         <div class="clearfix"></div>
@@ -50,7 +47,48 @@ All courses
 </div>
 <br>
 </div> 
+<p></p>
     {% endwith %}
 {% endfor %}
     </div> </div>
+
+<br>
+  <div class="container">
+  <div class="row justify-content-center">
+  <nav aria-label="Page navigation example" style="justify-content: center;">
+  {% if page_obj %}
+  <ul class="pagination justify-content-end">
+  {% if page_obj.has_previous %}
+  <li class="page-item">
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+    </li>
+  {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+  {% endif %}
+  {% for i in paginator.page_range %}
+  {% if page_obj.number == i %}
+    <li class="page-item active" style="z-index: 0;">
+      <a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a>
+    </li>
+  {% else %}
+    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+  {% endif %}
+  {% endfor %}
+  {% if page_obj.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#">Next</a>
+    </li>
+    {% endif %}
+  </ul>
+{% endif %}
+</nav>
+</div>
+</div>
+<br>
 {% endblock %}

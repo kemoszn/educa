@@ -2,6 +2,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('search/', 
+        views.SearchResultsView.as_view(),
+        name='search_results'),
     path('new/subject/', 
         views.SubjectCreationView.as_view(),
         name='subject_create'),
