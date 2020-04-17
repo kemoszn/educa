@@ -60,6 +60,8 @@ Module {{ module.order|add:1 }}: {{ module.title }}
                 Text</a></li>
         <li><a href="{% url "module_content_create" module.id "image" %}">
                 Image</a></li>
+        <li><a href="{% url "module_content_create" module.id "video" %}">
+                Video</a></li>
         <li><a href="{% url "module_content_create" module.id "embedvideo" %}">
                 Embed Video</a></li>
         <li><a href="{% url "module_content_create" module.id "file" %}">

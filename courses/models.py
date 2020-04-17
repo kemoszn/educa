@@ -80,7 +80,7 @@ class Content(models.Model):
     content_type = models.ForeignKey(ContentType,
                         on_delete=models.CASCADE,
                         limit_choices_to={'model__in':(
-                            'text','embedvideo','image','file')})
+                            'text','video','embedvideo','image','file')})
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey('content_type', 'object_id')
     order = OrderField(blank=True, for_fields=['module'])
@@ -118,3 +118,6 @@ class Image(ItemBase):
 
 class EmbedVideo(ItemBase):
     url = models.URLField()
+
+class Video(ItemBase):
+    file = models.FileField(upload_to='videos')

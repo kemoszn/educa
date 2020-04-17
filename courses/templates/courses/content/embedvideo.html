@@ -1,2 +1,6 @@
 {% load embed_video_tags %}
-{% video item.url "tiny" %}
+<div class="embed-responsive embed-responsive-16by9"> 
+{% video item.url "large" %}
+<iframe width="560" height="315" src="{{ item.url }}" 
+frameborder="0" allowfullscreen></iframe>
+</div>
