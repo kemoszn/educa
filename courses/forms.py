@@ -9,7 +9,7 @@ ModuleFormSet = inlineformset_factory(Course,
                                     extra=2,
                                     can_delete=True)
 
-class SubjectCreationForm(forms.ModelForm):
+class SubjectForm(forms.ModelForm):
         class Meta:
                 model = Subject
                 fields = ('title',)

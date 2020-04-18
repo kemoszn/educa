@@ -4,18 +4,22 @@
 {% endblock %}
 {% block content %}
 {% with subject=course.subject %}
-<h1>
-    {{ object.title }}
-</h1>
-<div class="module">
-    <h2>Overview</h2>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb"  style="font-size: 20px;">
+    <li class="breadcrumb-item"><a href="{% url "course_list" %}">Courses</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ object.title }}</li>
+  </ol>
+</nav>
+<div class="container">
+<img src="{{ object.image.url }}" class="img-fluid" alt="Responsive image"/>
+</div><br>
+    <h4>Overview</h4>
     <p>
         <a href="{% url "course_list_subject" subject.slug %}">
             {{ subject.title }}</a>.
         {{ course.modules.count }} modules.
-        Instructor: {{ course.owner.get_full_name }}
+        Instructor: {{ course.instructor }}
     </p>
     {{ object.overview|linebreaks }}
-</div>
 {% endwith %}
 {% endblock %}

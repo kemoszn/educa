@@ -4,6 +4,12 @@
 {{ object.title }}
 {% endblock %}
 {% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb"  style="font-size: 20px;">
+    <li class="breadcrumb-item"><a href="{% url "student_course_list" %}">My Courses</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ object.title }}</li>
+  </ol>
+</nav>
 <div class="accordion" id="accordionExample">
 {% for m in object.modules.all %}
   <div class="card">

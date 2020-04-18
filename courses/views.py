@@ -5,7 +5,7 @@ from .models import Course
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic.base import TemplateResponseMixin, View
-from .forms import ModuleFormSet, SubjectCreationForm, InstructorCreationForm
+from .forms import ModuleFormSet, SubjectForm, InstructorCreationForm
 from django.forms.models import modelform_factory
 from django.apps import apps
 from .models import Module, Content
@@ -18,6 +18,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
 from django.shortcuts import render_to_response
 from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
 
 def superuser_required():
     def wrapper(wrapped):
@@ -42,12 +43,12 @@ class OwnerEditMixin(object):
 
 class OwnerCourseMixin(OwnerMixin, LoginRequiredMixin):
     model = Course
-    fields = ['subject', 'instructor','title', 'students', 'overview']
+    fields = ['subject', 'image','instructor','title', 'students', 'overview']
     success_url = reverse_lazy('manage_course_list')
 
 
 class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
-    fields = ['subject', 'instructor','title', 'students', 'overview']
+    fields = ['subject', 'image', 'instructor','title', 'students', 'overview']
     success_url = reverse_lazy('manage_course_list')
     template_name = 'courses/manage/course/form.html'
 
@@ -233,13 +234,15 @@ class CourseDetailView(DetailView):
 @superuser_required()
 class SubjectCreationView(CreateView):
     template_name = 'courses/course/new_subject.html'
-    form_class = SubjectCreationForm
+    form_class = SubjectForm
     success_url = reverse_lazy('manage_course_list')
 
     def form_valid(self, form):
-        result = super(SubjectCreationView,
-                    self).form_valid(form)
-        return result
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
 
 @superuser_required()
 class InstructorCreationView(CreateView):
@@ -248,9 +251,10 @@ class InstructorCreationView(CreateView):
     success_url = reverse_lazy('manage_course_list')
 
     def form_valid(self, form):
-        result = super(InstructorCreationView,
-                    self).form_valid(form)
-        return result
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 class SearchResultsView(ListView, View):
     model = Course

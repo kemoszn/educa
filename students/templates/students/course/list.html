@@ -8,26 +8,30 @@
   </ol>
 </nav>
 <br>
+<div class="container" style="clear:both;">
+  <div class="row" class="clearfix">
 {% for course in object_list %}
-<div class="card mb-4 shadow-sm">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">{{ course.subject }}</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">{{ course.title }}</h1>
-        <ul class="list-unstyled mt-3 mb-4" style="font-size: 20px;">
-           {{ course.overview }}
-        </ul>
-        <a href="{% url "student_course_modules" course.id %}">
-        <button type="button" class="btn btn-lg btn-block btn-primary">Go to classroom </button>
-        </a>
-      </div>
-    </div>
+        <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="clearfix"></div>
+<div class="card" style="width: 18rem;  overflow: hidden;">
+  <img class="card-img-top" style="width: 286px; height: 180px;"
+  src="{{ course.image.url }}" alt="Card image cap">
+  <div class="card-body" class="clearfix">
+    <h5 class="card-title">{{ course.title }} - {{ course.subject }}</h5>
+    <p class="card-text" style="clear:both;"><b>Instructor:</b> {{ course.instructor }}</p>
+    <a href="{% url "student_course_modules" course.id %}" class="btn btn-block btn-primary">Go to classroom</a>
+  </div>
+  
+</div>
+<br>
+</div> 
+<p></p>
     {% empty %}
     <p>
         You are not enrolled in any courses yet.
         <a href="{% url "course_list" %}">Browse courses</a>
         to enroll in a course.
     </p>
-    {% endfor %}
+{% endfor %}
+    </div> </div>
     {% endblock %}

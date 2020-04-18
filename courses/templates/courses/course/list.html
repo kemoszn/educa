@@ -11,7 +11,7 @@ All courses
 
     <div class="container">
     <div class="row">
-    <div class="col-sm-6 col-md-12 col-lg-12">
+    <div class="col-sm-12 col-md-12 col-lg-12">
 <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="get">
       <input name="q" class="form-control mr-sm-2" style="width: 75%;" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="border: 1.5px solid #007bff;">Search</button>
@@ -21,27 +21,27 @@ All courses
     </div>
     <br>
     <div class="container">
-<a href="{% url "course_list" %}"><button type="button" 
-style="border: 1.5px solid #007bff;" {% if subject %} class="btn btn-outline-primary" {% else %} class="btn btn-primary" {% endif %}>All</button></a>
-{% for sub in subjects %}
-<a href="{% url "course_list_subject" sub.slug %}"><button type="button" 
-style="border: 1.5px solid #6c757d;;" {% if subject %} {% if subject.title == sub.title %} class="btn btn-secondary" {% else %} class="btn btn-outline-secondary" {% endif %} {% endif %} class="btn btn-outline-secondary">#{{ sub.title }}</button></a>
-{% endfor %}
-</div>
+  <a href="{% url "course_list" %}"><button type="button" 
+  style="border: 1.5px solid #007bff;" {% if subject %} class="btn btn-outline-primary" {% else %} class="btn btn-primary" {% endif %}>All</button></a>
+  {% for sub in subjects %}
+  <a href="{% url "course_list_subject" sub.slug %}"><button type="button" 
+  style="border: 1.5px solid #6c757d;;" {% if subject %} {% if subject.title == sub.title %} class="btn btn-secondary" {% else %} class="btn btn-outline-secondary" {% endif %} {% endif %} class="btn btn-outline-secondary">#{{ sub.title }}</button></a>
+  {% endfor %}
+  </div>
 <br><br>
 <div class="container" style="clear:both;">
   <div class="row" class="clearfix">
 {% for course in page_obj %}
     {% with subject=course.subject %}
-        <div class="col-sm-4">
+        <div class="col-sm-6 col-md-6 col-lg-4">
         <div class="clearfix"></div>
 <div class="card" style="width: 18rem;  overflow: hidden;">
   <img class="card-img-top" style="width: 286px; height: 180px;"
-  src="https://www.hklaw.com/-/media/images/services/practices/technology-and-cybersecurity/blockchain-technology/blockchain_law_banner.jpg" alt="Card image cap">
+  src="{{ course.image.url }}" alt="Card image cap">
   <div class="card-body" class="clearfix">
     <h5 class="card-title">{{ course.title }} - {{ subject }}</h5>
     <p class="card-text" style="clear:both;"><b>Instructor:</b> {{ course.instructor }}</p>
-    <a href="{% url "course_detail" course.slug %}" class="btn btn-primary">View course</a>
+    <a href="{% url "course_detail" course.slug %}" class="btn btn-primary">Details</a>
   </div>
   
 </div>

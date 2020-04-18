@@ -42,6 +42,7 @@ class Course(models.Model):
                             on_delete=models.CASCADE,
                             blank=True)
     overview = models.TextField()
+    image = models.FileField(upload_to="course_poster")
     created = models.DateTimeField(auto_now_add=True)
     students = models.ManyToManyField(User,
                                     related_name='courses_joined',
