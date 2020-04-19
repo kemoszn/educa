@@ -1,11 +1,36 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}Logged out{% endblock %}
 {% block content %}
+{% get_current_language as LANGUAGE_CODE %}
+{% ifequal LANGUAGE_CODE 'ar' %}
+<style>
+label {
+    float: right;
+    clear: both;
+    margin: 0 0 8px 0;
+}
+li {
+  float: right;
+  clear: both;
+  text-align: right;
+}
+ul {
+    list-style-type: disc;
+    float: right;
+    text-align: right;
+    direction:rtl;
+}
+.card {
+  text-align: right;
+}
+</style>
+{% endifequal %}
+
 <div class="card">
 <div class="card-body">
   <p class="card-text">
-    <p>You have been successfully signed out.
-        You can <a href="{% url "login" %}">sign-in again</a>.</p>
+    <p>{% trans 'You have been successfully signed out.You can' %}<a href="{% url "login" %}">&nbsp;{% trans 'signin again' %}</a>.</p>
         </p>
         </div>
         </div>

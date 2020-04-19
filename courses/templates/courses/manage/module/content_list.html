@@ -1,15 +1,52 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load course %}
 {% block title %}
-Module {{ module.order|add:1 }}: {{ module.title }}
+{% trans 'Module' %} {{ module.order|add:1 }}: {{ module.title }}
 {% endblock %}
 {% block content %}
+{% get_current_language as LANGUAGE_CODE %}
+{% ifequal LANGUAGE_CODE 'ar' %}
+<style>
+label {
+    float: right;
+    clear: both;
+    margin: 0 0 8px 0;
+}
+body {
+  text-align: right;
+}
+.btn-outline-secondary, input {
+    text-align: right;
+    clear: both;
+}
+#module-contents input[type=submit] {
+  float: right;
+}
+.btn-link {
+  float: left;
+}
+ul {
+    list-style-type: disc;
+    float: right;
+    text-align: right;
+    direction:rtl;
+}
+nav,ol .breadcrumb {
+  text-align: right;
+  direction:rtl;
+}
+.card {
+  text-align: right;
+}
+</style>
+{% endifequal %}
 {% with course=module.course %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb"  style="font-size: 20px;">
-    <li class="breadcrumb-item"><a href="{% url "course_list" %}">Home</a></li>
-    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">Course Mangement</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Course "{{ course.title }}"</li>
+    <li class="breadcrumb-item"><a href="{% url "course_list" %}">{% trans 'Home' %}</a></li>
+    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">{% trans 'Course Mangement' %}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{% trans 'Course' %} "{{ course.title }}"</li>
   </ol>
 </nav>
 <!-- new -->
@@ -43,29 +80,29 @@ Module {{ module.order|add:1 }}: {{ module.title }}
     text-transform:uppercase;
     border:none;
     padding:10px 20px;
-    margin:20px 0;">Edit </button></a> 
+    margin:20px 0;">{% trans 'Edit' %} </button></a> 
             <form action="{% url "module_content_delete" content.id %}" method="post">
-                <input type="submit" class="button" value="Delete">
+                <input type="submit" class="button" value="{% trans 'Delete' %}">
                 {% csrf_token %}
             </form>
             {% endwith %}
         </div>
         {% empty %}
-        <p>This module has no contents yet.</p>
+        <p>{% trans 'This module has no contents yet.' %}</p>
         {% endfor %}
     </div> <br>
-    <h4>Add new content:</h4>
+    <h4 style="font-family: 'Cairo', sans-serif;">{% trans 'Add new content:' %}</h4>
     <ul class="content-types">
         <li><a href="{% url "module_content_create" module.id "text" %}">
-                Text</a></li>
+                {% trans 'Text' %}</a></li>
         <li><a href="{% url "module_content_create" module.id "image" %}">
-                Image</a></li>
+                {% trans 'Image' %}</a></li>
         <li><a href="{% url "module_content_create" module.id "video" %}">
-                Video</a></li>
+                {% trans 'Video' %}</a></li>
         <li><a href="{% url "module_content_create" module.id "embedvideo" %}">
-                Embed Video</a></li>
+                {% trans 'Embed Video' %}</a></li>
         <li><a href="{% url "module_content_create" module.id "file" %}">
-                File</a></li>
+                {% trans 'File' %}</a></li>
     </ul>
 </div>
     </div>

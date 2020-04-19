@@ -1,19 +1,48 @@
 {% extends "base.html" %}
-{% block title %}Log-in{% endblock %}
+{% load i18n %}
+{% block title %}
+{% trans "Login" %}
+{% endblock %}
 {% block content %}
-    {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-    {% else %}
-    {% endif %}
-    <div class="card">
-  <div class="card-body">
-  <p class="card-text">
+{% get_current_language as LANGUAGE_CODE %}
+{% ifequal LANGUAGE_CODE 'ar' %}
+<style>
+label {
+    float: right;
+    clear: both;
+    margin: 0 0 8px 0;
+}
+input{
+   float: right;
+   clear: both;
+   text-align: right; 
+}
+li {
+  float: right;
+  clear: both;
+  text-align: right;
+}
+ul {
+    list-style-type: disc;
+    float: right;
+    text-align: right;
+    direction:rtl;
+}
+.card {
+  text-align: right;
+}
+</style>
+{% endifequal %}
+
+    <div class="card" >
+  <div class="card-body"  {% ifequal LANGUAGE_CODE 'ar' %} style="float: right;" {% endifequal %}>
+  <p class="card-text" >
     <div class="login-form">
         <form action="{% url 'login' %}" method="post">
             {{ form.as_p }}
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}" />
-            <p><input type="submit" value="Login"></p>
+            <p><input type="submit" value="{% trans 'Login' %}"></p>
         </form>
     </div>
     </p>

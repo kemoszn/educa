@@ -1,20 +1,62 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}
 {% if subject %}
-{{ subject.title }} courses
+{{ subject.title }} {% trans 'courses' %}
 {% else %}
-All courses
+{% trans 'All courses' %}
 {% endif %}
 {% endblock %}
 {% block content %}
-
+{% get_current_language as LANGUAGE_CODE %}
+{% ifequal LANGUAGE_CODE 'ar' %}
+<style>
+label {
+    float: right;
+    clear: both;
+    margin: 0 0 8px 0;
+}
+body {
+  text-align: right;
+}
+.btn-outline-secondary, input {
+    text-align: right;
+    clear: both;
+}
+#module-contents input[type=submit] {
+  float: right;
+}
+.btn-link {
+  float: left;
+}
+ul {
+    list-style-type: disc;
+    float: right;
+    text-align: right;
+    direction:rtl;
+}
+nav,ol .breadcrumb {
+  text-align: right;
+  direction:rtl;
+}
+.card {
+  text-align: right;
+  float: right;
+  direction: rtl;
+}
+.container, form {
+  text-align: right;
+  direction: rtl
+}
+</style>
+{% endifequal %}
 
     <div class="container">
     <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
 <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="get">
-      <input name="q" class="form-control mr-sm-2" style="width: 75%;" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="border: 1.5px solid #007bff;">Search</button>
+      <input name="q" class="form-control mr-sm-2" style="width: 75%;" type="search" placeholder="{% trans 'Search' %}" aria-label="Search">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="border: 1.5px solid #007bff;">{% trans 'Search' %}</button>
     </form>
     </div>
     </div>
@@ -22,10 +64,10 @@ All courses
     <br>
     <div class="container">
   <a href="{% url "course_list" %}"><button type="button" 
-  style="border: 1.5px solid #007bff;" {% if subject %} class="btn btn-outline-primary" {% else %} class="btn btn-primary" {% endif %}>All</button></a>
+  style="border: 1.5px solid #007bff;" {% if subject %} class="btn btn-outline-primary" {% else %} class="btn btn-primary" {% endif %}>{% trans 'All' %} </button></a>
   {% for sub in subjects %}
   <a href="{% url "course_list_subject" sub.slug %}"><button type="button" 
-  style="border: 1.5px solid #6c757d;;" {% if subject %} {% if subject.title == sub.title %} class="btn btn-secondary" {% else %} class="btn btn-outline-secondary" {% endif %} {% endif %} class="btn btn-outline-secondary">#{{ sub.title }}</button></a>
+  style="border: 1.5px solid #6c757d;;" {% if subject %} {% if subject.title == sub.title %} class="btn btn-secondary" {% else %} class="btn btn-outline-secondary" {% endif %} {% endif %} class="btn btn-outline-secondary">{{ sub.title }}</button></a>
   {% endfor %}
   </div>
 <br><br>
@@ -40,8 +82,8 @@ All courses
   src="{{ course.image.url }}" alt="Card image cap">
   <div class="card-body" class="clearfix">
     <h5 class="card-title">{{ course.title }} - {{ subject }}</h5>
-    <p class="card-text" style="clear:both;"><b>Instructor:</b> {{ course.instructor }}</p>
-    <a href="{% url "course_detail" course.slug %}" class="btn btn-primary">Details</a>
+    <p class="card-text" style="clear:both;"><b>{% trans 'Instructor:' %} </b> {{ course.instructor }}</p>
+    <a href="{% url "course_detail" course.slug %}" class="btn btn-primary">{% trans 'Details' %}</a>
   </div>
   
 </div>
@@ -60,11 +102,11 @@ All courses
   <ul class="pagination justify-content-end">
   {% if page_obj.has_previous %}
   <li class="page-item">
-      <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">{% trans 'Previous' %}</a>
     </li>
   {% else %}
     <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
+      <a class="page-link" href="#" tabindex="-1">{% trans 'Previous' %}</a>
     </li>
   {% endif %}
   {% for i in paginator.page_range %}
@@ -78,11 +120,11 @@ All courses
   {% endfor %}
   {% if page_obj.has_next %}
     <li class="page-item">
-      <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+      <a class="page-link" href="?page={{ page_obj.next_page_number }}">{% trans 'Next' %}</a>
     </li>
     {% else %}
     <li class="page-item disabled">
-      <a class="page-link" href="#">Next</a>
+      <a class="page-link" href="#">{% trans 'Next' %}</a>
     </li>
     {% endif %}
   </ul>

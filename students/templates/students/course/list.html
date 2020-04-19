@@ -1,10 +1,53 @@
 {% extends "base.html" %}
-{% block title %}My courses{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'My courses' %}{% endblock %}
 {% block content %}
+{% get_current_language as LANGUAGE_CODE %}
+{% ifequal LANGUAGE_CODE 'ar' %}
+<style>
+label {
+    float: right;
+    clear: both;
+    margin: 0 0 8px 0;
+}
+body {
+  text-align: right;
+}
+.btn-outline-secondary, input {
+    text-align: right;
+    clear: both;
+}
+#module-contents input[type=submit] {
+  float: right;
+}
+.btn-link {
+  float: left;
+}
+ul {
+    list-style-type: disc;
+    float: right;
+    text-align: right;
+    direction:rtl;
+}
+nav,ol .breadcrumb {
+  text-align: right;
+  direction:rtl;
+}
+.card {
+  text-align: right;
+  float: right;
+  direction: rtl;
+}
+.container, form {
+  text-align: right;
+  direction: rtl
+}
+</style>
+{% endifequal %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb"  style="font-size: 20px;">
-    <li class="breadcrumb-item"><a href="{% url "course_list" %}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">My courses</li>
+    <li class="breadcrumb-item"><a href="{% url "course_list" %}">{% trans 'Home' %}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{% trans 'My courses' %}</li>
   </ol>
 </nav>
 <br>
@@ -18,8 +61,8 @@
   src="{{ course.image.url }}" alt="Card image cap">
   <div class="card-body" class="clearfix">
     <h5 class="card-title">{{ course.title }} - {{ course.subject }}</h5>
-    <p class="card-text" style="clear:both;"><b>Instructor:</b> {{ course.instructor }}</p>
-    <a href="{% url "student_course_modules" course.id %}" class="btn btn-block btn-primary">Go to classroom</a>
+    <p class="card-text" style="clear:both;"><b>{% trans 'Instructor:' %}</b> {{ course.instructor }}</p>
+    <a href="{% url "student_course_modules" course.id %}" class="btn btn-block btn-primary">{% trans 'Go to classroom' %}</a>
   </div>
   
 </div>

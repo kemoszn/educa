@@ -1,14 +1,43 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% block title %}
 Edit "{{ course.title }}"
 {% endblock %}
 {% block content %}
+{% get_current_language as LANGUAGE_CODE %}
+{% ifequal LANGUAGE_CODE 'ar' %}
+<style>
+label {
+    float: right;
+    clear: both;
+    margin: 0 0 8px 0;
+}
+li, input, textarea, .btn-lg {
+  float: right;
+  clear: both;
+  text-align: right;
+}
+nav,ol .breadcrumb {
+  text-align: right;
+  direction:rtl;
+}
+ul {
+    list-style-type: disc;
+    float: right;
+    text-align: right;
+    direction:rtl;
+}
+.card {
+  text-align: right;
+}
+</style>
+{% endifequal %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb"  style="font-size: 20px;">
-    <li class="breadcrumb-item"><a href="{% url "course_list" %}">Home</a></li>
-    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">Course Mangement</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Edit "{{ course.title }}" modules</li>
+    <li class="breadcrumb-item"><a href="{% url "course_list" %}">{% trans 'Home' %}</a></li>
+    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">{% trans 'Course Mangement' %}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{% trans 'Edit' %} "{{ course.title }}" {% trans 'modules' %}</li>
   </ol>
 </nav>
  <br>
@@ -17,6 +46,6 @@ Edit "{{ course.title }}"
         {{ formset.management_form }}
         {% csrf_token %}
         <h1 style="background-color: #fff"></h1><button type="submit" 
-        class="btn btn-primary btn-lg" style="padding: top right bottom left;">Save modules</button>
+        class="btn btn-primary btn-lg" style="padding: top right bottom left;">{% trans 'Save modules' %}</button>
     </form>
 {% endblock %}

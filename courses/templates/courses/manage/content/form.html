@@ -1,28 +1,63 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}
 {% if object %}
-Edit content "{{ object.title }}"
+{% trans 'Edit content' %} "{{ object.title }}"
 {% else %}
-Add a new content
+{% trans 'Add a new content' %}
 {% endif %}
 {% endblock %}
 {% block content %}
+{% get_current_language as LANGUAGE_CODE %}
+{% ifequal LANGUAGE_CODE 'ar' %}
+<style>
+label {
+    float: right;
+    clear: both;
+    margin: 0 0 8px 0;
+}
+li, input {
+  float: right;
+  clear: both;
+  text-align: right;
+  direction:rtl;
+}
+nav,ol .breadcrumb {
+  text-align: right;
+  direction:rtl;
+}
+ul {
+    list-style-type: disc;
+    float: right;
+    text-align: right;
+    direction:rtl;
+}
+h2 {
+  font-family: 'Cairo', sans-serif;
+  text-align: right;
+}
+.card, p, form {
+  text-align: right;
+  direction:rtl;
+}
+</style>
+{% endifequal %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb"  style="font-size: 20px;">
-    <li class="breadcrumb-item"><a href="{% url "course_list" %}">Home</a></li>
-    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">Course Mangement</a></li>
+    <li class="breadcrumb-item"><a href="{% url "course_list" %}">{% trans 'Home' %}</a></li>
+    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">{% trans 'Course Mangement' %}</a></li>
     <li class="breadcrumb-item active" aria-current="page"> {% if object %}
-    Edit content "{{ object.title }}"
+    {% trans 'Edit content' %} "{{ object.title }}"
     {% else %}
-    Add a new content
+    {% trans 'Add a new content' %}
     {% endif %}</li>
   </ol>
 </nav>
 
-    <h2>Course info</h2>
+    <h2>{% trans 'Course info' %}</h2>
     <form action="" method="post" enctype="multipart/form-data">
         {{ form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="Save content"></p>
+        <p><input type="submit" value="{% trans 'Save content' %}"></p>
     </form>
 {% endblock %}

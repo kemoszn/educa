@@ -1,11 +1,54 @@
 {% extends "base.html" %}
-{% block title %}Delete course{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'Delete course' %}{% endblock %}
 {% block content %}
+{% get_current_language as LANGUAGE_CODE %}
+{% ifequal LANGUAGE_CODE 'ar' %}
+<style>
+label {
+    float: right;
+    clear: both;
+    margin: 0 0 8px 0;
+}
+body {
+  text-align: right;
+}
+.btn-outline-secondary {
+    text-align: right;
+    clear: both;
+}
+li {
+  float: right;
+  clear: both;
+  text-align: right;
+}
+ul {
+    list-style-type: disc;
+    float: right;
+    text-align: right;
+    direction:rtl;
+}
+nav,ol .breadcrumb {
+  text-align: right;
+  direction:rtl;
+}
+.card {
+  text-align: right;
+}
+.btn-danger, .button {
+  text-align: right;
+  float: center;
+}
+form p {
+    overflow: hidden;
+}
+</style>
+{% endifequal %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb"  style="font-size: 20px;">
-    <li class="breadcrumb-item"><a href="{% url "course_list" %}">Home</a></li>
-    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">Course Mangement</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Delete course "{{ object.title }}"</li>
+    <li class="breadcrumb-item"><a href="{% url "course_list" %}">{% trans 'Home' %}</a></li>
+    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">{% trans 'Course Mangement' %}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{% trans 'Delete course' %} "{{ object.title }}"</li>
   </ol>
 </nav>
 <div class="card">
@@ -13,14 +56,14 @@
   <p class="card-text">
     <form action="" method="post">
         {% csrf_token %}
-        <p>Are you sure you want to delete "{{ object }}"?</p>
-        <input type="submit" class="button" value="Confirm"> &nbsp;
-        <a href="{% url "manage_course_list" %}"> <button type="button" class="btn btn-danger" style="border-radius:5px;
+        <p>{% trans "Are you sure you want to delete" %} "{{ object }}" {% trans '?' %}</p>
+        <input type="submit" class="button" value="{% trans 'Confirm' %}"> &nbsp; &nbsp; &nbsp;
+        <a href="{% url "manage_course_list" %}"><button type="button" class="btn btn-danger" style="border-radius:5px;
     font-size:16px;
     text-transform:uppercase;
     border:none;
     padding:10px 20px;
-    margin:20px 0;">Cancel </button></a>
+    margin:20px 0;">{% trans 'Cancel' %} </button></a>
     </form>
     </p>
     </div>

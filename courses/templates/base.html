@@ -17,7 +17,6 @@
 
 
 </head>
-
 <body style="font-family: 'Cairo', sans-serif;">
   <div style="background-color: #2E2E3A!important; font-family: 'Cairo', sans-serif;"
     class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
@@ -32,7 +31,7 @@
     </nav>
     {% if request.user.is_authenticated %}
     <div class="btn-group" role="group">
-      <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+      <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         <svg class="bi bi-people-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
           xmlns="http://www.w3.org/2000/svg">
@@ -52,6 +51,7 @@
       {% else %}
       <a class="btn btn-outline-primary" href="{% url "login" %}">{% trans 'Sign in' %}</a>
       {% endif %}
+      
       <div class="btn-group" role="group">
         {% get_current_language as LANGUAGE_CODE %}
         {% get_available_languages as LANGUAGES %}

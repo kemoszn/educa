@@ -1,24 +1,67 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}
-Search Result
+{% trans 'Search Result' %}
 {% endblock %}
 {% block content %}
+{% get_current_language as LANGUAGE_CODE %}
+{% ifequal LANGUAGE_CODE 'ar' %}
+<style>
+label {
+    float: right;
+    clear: both;
+    margin: 0 0 8px 0;
+}
+body {
+  text-align: right;
+}
+.btn-outline-secondary, input {
+    text-align: right;
+    clear: both;
+}
+#module-contents input[type=submit] {
+  float: right;
+}
+.btn-link {
+  float: left;
+}
+ul {
+    list-style-type: disc;
+    float: right;
+    text-align: right;
+    direction:rtl;
+}
+nav,ol .breadcrumb {
+  text-align: right;
+  direction:rtl;
+}
+.card {
+  text-align: right;
+  float: right;
+  direction: rtl;
+}
+.container, form {
+  text-align: right;
+  direction: rtl
+}
+</style>
+{% endifequal %}
 <div class="container">
     <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
 <form action="{% url 'search_results' %}" class="form-inline my-2 my-lg-0" method="get">
       <input name="q" class="form-control mr-sm-2" style="width: 75%;"type="search"
-       placeholder="Search" aria-label="Search" value="{{object_list.query}}">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="border: 1.5px solid #007bff;">Search</button>
+       placeholder="{% trans 'Search' %}" aria-label="Search" value="{{object_list.query}}">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" style="border: 1.5px solid #007bff;">{% trans 'Search' %}</button>
     </form>
     </div>
     </div>
     </div>
     <br>
     {% if object_list.object_list.count == 0 %}
-    No hits for "{{ object_list.query }}" try a different search phrase
+    {% trans 'No hits for' %} "{{ object_list.query }}" {% trans 'try a different search phrase' %}
     {% else %}
-    About <b style="color: #007bff;">{{ object_list.object_list.count }}</b> search result{% if object_list.object_list.count > 1 %}s{% endif %} for "{{ object_list.query }}"
+    {% trans 'About' %} <b style="color: #007bff;">{{ object_list.object_list.count }}</b> {% trans 'search results for' %}  "{{ object_list.query }}"
     <br><br>
     {% if object_list.object_list.count > 0 %}
     <div class="container" style="clear:both;">
@@ -31,8 +74,8 @@ Search Result
   src="{{ i.image.url }}" alt="Card image cap">
   <div class="card-body" class="clearfix">
     <h5 class="card-title">{{ i.title }} - {{ i.subject }}</h5>
-    <p class="card-text" style="clear:both;"><b>Instructor:</b> {{ i.instructor }}</p>
-    <a href="{% url "course_detail" i.slug %}" class="btn btn-primary">View course</a>
+    <p class="card-text" style="clear:both;"><b>{% trans 'Instructor:' %} </b> {{ i.instructor }}</p>
+    <a href="{% url "course_detail" i.slug %}" class="btn btn-primary">{% trans 'Details' %}</a>
   </div>
   
 </div>

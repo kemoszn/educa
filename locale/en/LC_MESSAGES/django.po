@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 15:42+0200\n"
+"POT-Creation-Date: 2020-04-20 00:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,36 +63,309 @@ msgstr ""
 msgid "url"
 msgstr ""
 
-#: courses/templates/base.html:22
+#: courses/templates/base.html:25
 msgid "Browse"
 msgstr ""
 
-#: courses/templates/base.html:23
+#: courses/templates/base.html:26
 msgid "Contact"
 msgstr ""
 
-#: courses/templates/base.html:24
+#: courses/templates/base.html:27
 msgid "Learn"
 msgstr ""
 
-#: courses/templates/base.html:26
+#: courses/templates/base.html:29
 msgid "Manage"
 msgstr ""
 
-#: courses/templates/base.html:39
+#: courses/templates/base.html:47
+#: courses/templates/registration/password_change_form.html:4
 msgid "Change password"
 msgstr ""
 
-#: courses/templates/base.html:40
+#: courses/templates/base.html:48
 msgid "Logout"
 msgstr ""
 
-#: courses/templates/base.html:44
+#: courses/templates/base.html:52
 msgid "Sign in"
 msgstr ""
 
-#: courses/templates/base.html:82
+#: courses/templates/base.html:91
 msgid "EducaCenter 2020. All rights reserved. "
+msgstr ""
+
+#: courses/templates/courses/course/detail.html:56
+msgid "Courses"
+msgstr ""
+
+#: courses/templates/courses/course/list.html:5
+msgid "courses"
+msgstr ""
+
+#: courses/templates/courses/course/list.html:7
+msgid "All courses"
+msgstr ""
+
+#: courses/templates/courses/course/list.html:58
+#: courses/templates/courses/course/list.html:59
+#: courses/templates/courses/course/search_results.html:54
+#: courses/templates/courses/course/search_results.html:55
+msgid "Search"
+msgstr ""
+
+#: courses/templates/courses/course/list.html:67
+msgid "All"
+msgstr ""
+
+#: courses/templates/courses/course/list.html:85
+#: courses/templates/courses/course/search_results.html:77
+#: students/templates/students/course/list.html:64
+msgid "Instructor:"
+msgstr ""
+
+#: courses/templates/courses/course/list.html:86
+#: courses/templates/courses/course/search_results.html:78
+msgid "Details"
+msgstr ""
+
+#: courses/templates/courses/course/list.html:105
+#: courses/templates/courses/course/list.html:109
+#: courses/templates/courses/manage/course/list.html:79
+#: courses/templates/courses/manage/course/list.html:83
+msgid "Previous"
+msgstr ""
+
+#: courses/templates/courses/course/list.html:123
+#: courses/templates/courses/course/list.html:127
+#: courses/templates/courses/manage/course/list.html:97
+#: courses/templates/courses/manage/course/list.html:101
+msgid "Next"
+msgstr ""
+
+#: courses/templates/courses/course/new_instructor.html:4
+msgid "New Instructor"
+msgstr ""
+
+#: courses/templates/courses/course/new_instructor.html:42
+msgid "Add Instructor"
+msgstr ""
+
+#: courses/templates/courses/course/new_subject.html:4
+msgid "New Subject"
+msgstr ""
+
+#: courses/templates/courses/course/new_subject.html:42
+msgid "Add Subject"
+msgstr ""
+
+#: courses/templates/courses/course/search_results.html:4
+msgid "Search Result"
+msgstr ""
+
+#: courses/templates/courses/course/search_results.html:62
+msgid "No hits for"
+msgstr ""
+
+#: courses/templates/courses/course/search_results.html:62
+msgid "try a different search phrase"
+msgstr ""
+
+#: courses/templates/courses/course/search_results.html:64
+msgid "About"
+msgstr ""
+
+#: courses/templates/courses/course/search_results.html:64
+msgid "search results for"
+msgstr ""
+
+#: courses/templates/courses/manage/content/form.html:5
+#: courses/templates/courses/manage/content/form.html:50
+msgid "Edit content"
+msgstr ""
+
+#: courses/templates/courses/manage/content/form.html:7
+#: courses/templates/courses/manage/content/form.html:52
+msgid "Add a new content"
+msgstr ""
+
+#: courses/templates/courses/manage/content/form.html:47
+#: courses/templates/courses/manage/course/delete.html:49
+#: courses/templates/courses/manage/course/form.html:43
+#: courses/templates/courses/manage/course/list.html:43
+#: courses/templates/courses/manage/module/content_list.html:47
+#: courses/templates/courses/manage/module/formset.html:38
+#: students/templates/students/course/list.html:49
+msgid "Home"
+msgstr ""
+
+#: courses/templates/courses/manage/content/form.html:48
+#: courses/templates/courses/manage/course/delete.html:50
+#: courses/templates/courses/manage/course/form.html:44
+#: courses/templates/courses/manage/module/content_list.html:48
+#: courses/templates/courses/manage/module/formset.html:39
+msgid "Course Mangement"
+msgstr ""
+
+#: courses/templates/courses/manage/content/form.html:57
+#: courses/templates/courses/manage/course/form.html:57
+msgid "Course info"
+msgstr ""
+
+#: courses/templates/courses/manage/content/form.html:61
+msgid "Save content"
+msgstr ""
+
+#: courses/templates/courses/manage/course/delete.html:3
+#: courses/templates/courses/manage/course/delete.html:51
+msgid "Delete course"
+msgstr ""
+
+#: courses/templates/courses/manage/course/delete.html:59
+msgid "Are you sure you want to delete"
+msgstr ""
+
+#: courses/templates/courses/manage/course/delete.html:59
+msgid "?"
+msgstr ""
+
+#: courses/templates/courses/manage/course/delete.html:60
+msgid "Confirm"
+msgstr ""
+
+#: courses/templates/courses/manage/course/delete.html:66
+msgid "Cancel"
+msgstr ""
+
+#: courses/templates/courses/manage/course/form.html:6
+#: courses/templates/courses/manage/course/form.html:46
+msgid "Edit course"
+msgstr ""
+
+#: courses/templates/courses/manage/course/form.html:8
+#: courses/templates/courses/manage/course/form.html:48
+msgid "Create a new course"
+msgstr ""
+
+#: courses/templates/courses/manage/course/form.html:62
+msgid "Save Course"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:3
+#: students/templates/students/course/list.html:3
+#: students/templates/students/course/list.html:50
+msgid "My courses"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:44
+msgid "Course Management"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:47
+#: courses/templates/courses/manage/module/content_list.html:49
+msgid "Course"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:48
+msgid "Student"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:49
+msgid "Subject"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:50
+msgid "Instructor"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:57
+#: courses/templates/courses/manage/module/content_list.html:83
+#: courses/templates/courses/manage/module/formset.html:40
+msgid "Edit"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:59
+#: courses/templates/courses/manage/module/content_list.html:85
+msgid "Delete"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:60
+msgid "Edit Modules"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:62
+msgid "Manage Content"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:68
+msgid "You haven't created any courses yet."
+msgstr ""
+
+#: courses/templates/courses/manage/module/content_list.html:5
+msgid "Module"
+msgstr ""
+
+#: courses/templates/courses/manage/module/content_list.html:91
+msgid "This module has no contents yet."
+msgstr ""
+
+#: courses/templates/courses/manage/module/content_list.html:94
+msgid "Add new content:"
+msgstr ""
+
+#: courses/templates/courses/manage/module/content_list.html:97
+msgid "Text"
+msgstr ""
+
+#: courses/templates/courses/manage/module/content_list.html:99
+msgid "Image"
+msgstr ""
+
+#: courses/templates/courses/manage/module/content_list.html:101
+msgid "Video"
+msgstr ""
+
+#: courses/templates/courses/manage/module/content_list.html:103
+msgid "Embed Video"
+msgstr ""
+
+#: courses/templates/courses/manage/module/content_list.html:105
+msgid "File"
+msgstr ""
+
+#: courses/templates/courses/manage/module/formset.html:40
+msgid "modules"
+msgstr ""
+
+#: courses/templates/courses/manage/module/formset.html:49
+msgid "Save modules"
+msgstr ""
+
+#: courses/templates/registration/logged_out.html:33
+msgid "You have been successfully signed out.You can"
+msgstr ""
+
+#: courses/templates/registration/logged_out.html:33
+msgid "signin again"
+msgstr ""
+
+#: courses/templates/registration/login.html:4
+#: courses/templates/registration/login.html:45
+msgid "Login"
+msgstr ""
+
+#: courses/templates/registration/password_change_done.html:3
+#: courses/templates/registration/password_change_done.html:21
+msgid "Password changed"
+msgstr ""
+
+#: courses/templates/registration/password_change_done.html:22
+msgid "Your password has been successfully changed."
+msgstr ""
+
+#: courses/templates/registration/password_change_form.html:40
+msgid "Change"
 msgstr ""
 
 #: educa/settings.py:128
@@ -101,4 +374,24 @@ msgstr ""
 
 #: educa/settings.py:129
 msgid "Arabic"
+msgstr ""
+
+#: students/templates/students/course/detail.html:49
+msgid "My Courses"
+msgstr ""
+
+#: students/templates/students/course/list.html:65
+msgid "Go to classroom"
+msgstr ""
+
+#: students/templates/students/student/registration.html:5
+msgid "Sign up"
+msgstr ""
+
+#: students/templates/students/student/registration.html:40
+msgid "Enter student details to create an account:"
+msgstr ""
+
+#: students/templates/students/student/registration.html:45
+msgid "Create account"
 msgstr ""
