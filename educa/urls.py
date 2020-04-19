@@ -19,8 +19,10 @@ from django.contrib.auth import views as auth_views
 from courses.views import CourseListView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
+    path('rosetta/', include('rosetta.urls')),
     path('', CourseListView.as_view(), name='course_list'),
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
@@ -33,7 +35,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('courses/', include('courses.urls')),
     path('students/', include('students.urls')),
-]
+)
 
 
 if settings.DEBUG:
