@@ -47,7 +47,8 @@ nav,ol .breadcrumb {
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb"  style="font-size: 20px;">
     <li class="breadcrumb-item"><a href="{% url "student_course_list" %}">{% trans 'My Courses' %}</a></li>
-    <li class="breadcrumb-item active" aria-current="page">{{ object.title }}</li>
+    <li class="breadcrumb-item active" aria-current="page">
+    {% ifequal LANGUAGE_CODE 'ar' %} &nbsp;{% endifequal %}{{ object.title }}</li>
   </ol>
 </nav>
 <div class="accordion" id="accordionExample">

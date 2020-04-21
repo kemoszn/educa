@@ -55,7 +55,7 @@ class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
 @superuser_required()
 class ManageCourseListView(OwnerCourseMixin, LoginRequiredMixin, ListView):
     template_name = 'courses/manage/course/list.html'
-    paginate_by = 4
+    paginate_by = 5
 
 class CourseCreateView(PermissionRequiredMixin, OwnerCourseEditMixin, CreateView):
     permission_required = 'courses.add_course'

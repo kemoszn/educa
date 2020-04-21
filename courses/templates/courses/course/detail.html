@@ -40,7 +40,7 @@ nav,ol .breadcrumb {
   float: right;
   direction: rtl;
 }
-.container, form {
+form {
   text-align: right;
   direction: rtl;
 }
@@ -48,13 +48,17 @@ p, h4 {
   text-align: left;
   direction: ltr;
 }
+#woo {
+  direction: rtl;
+}
 </style>
 {% endifequal %}
 {% with subject=course.subject %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb"  style="font-size: 20px;">
     <li class="breadcrumb-item"><a href="{% url "course_list" %}">{% trans 'Courses' %}</a></li>
-    <li class="breadcrumb-item active" aria-current="page">{{ object.title }}</li>
+    <li class="breadcrumb-item active" aria-current="page">
+    {% ifequal LANGUAGE_CODE 'ar' %} &nbsp;{% endifequal %}{{ object.title }}</li>
   </ol>
 </nav>
 <div class="container">

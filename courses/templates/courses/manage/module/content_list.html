@@ -45,8 +45,10 @@ nav,ol .breadcrumb {
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb"  style="font-size: 20px;">
     <li class="breadcrumb-item"><a href="{% url "course_list" %}">{% trans 'Home' %}</a></li>
-    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">{% trans 'Course Mangement' %}</a></li>
-    <li class="breadcrumb-item active" aria-current="page">{% trans 'Course' %} "{{ course.title }}"</li>
+    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">
+    {% ifequal LANGUAGE_CODE 'ar' %} &nbsp;{% endifequal %}{% trans 'Course Mangement' %}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">
+    {% ifequal LANGUAGE_CODE 'ar' %} &nbsp;{% endifequal %}{% trans 'Course' %} "{{ course.title }}"</li>
   </ol>
 </nav>
 <!-- new -->

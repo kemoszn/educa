@@ -44,14 +44,20 @@ nav,ol .breadcrumb {
   float: right;
   direction: rtl;
 }
-.container, form {
+form {
   text-align: right;
-  direction: rtl
+  direction: rtl;
+}
+#woo {
+  direction: rtl;
+}
+.clearfix {
+  clear: both;
 }
 </style>
 {% endifequal %}
 
-    <div class="container">
+    <div class="container" id="woo">
     <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
 <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="get">
@@ -62,7 +68,7 @@ nav,ol .breadcrumb {
     </div>
     </div>
     <br>
-    <div class="container">
+    <div class="container" id="woo">
   <a href="{% url "course_list" %}"><button type="button" 
   style="border: 1.5px solid #007bff;" {% if subject %} class="btn btn-outline-primary" {% else %} class="btn btn-primary" {% endif %}>{% trans 'All' %} </button></a>
   {% for sub in subjects %}
@@ -71,30 +77,29 @@ nav,ol .breadcrumb {
   {% endfor %}
   </div>
 <br><br>
-<div class="container" style="clear:both;">
-  <div class="row" class="clearfix">
+<div class="container" id="woo" style="clear:both;">
 {% for course in page_obj %}
     {% with subject=course.subject %}
+    {% if forloop.first %}<div class="clearfix"><div class="row">{% endif %}
         <div class="col-sm-6 col-md-6 col-lg-4">
-        <div class="clearfix"></div>
 <div class="card" style="width: 18rem;  overflow: hidden;">
   <img class="card-img-top" style="width: 286px; height: 180px;"
   src="{{ course.image.url }}" alt="Card image cap">
-  <div class="card-body" class="clearfix">
+  <div class="card-body">
     <h5 class="card-title">{{ course.title }} - {{ subject }}</h5>
     <p class="card-text" style="clear:both;"><b>{% trans 'Instructor:' %} </b> {{ course.instructor }}</p>
     <a href="{% url "course_detail" course.slug %}" class="btn btn-primary">{% trans 'Details' %}</a>
   </div>
-  
 </div>
-<br>
 </div> 
-<p></p>
+&nbsp;
+{% if forloop.counter|divisibleby:3 %}</div></div>&nbsp;<div class="clearfix"><div class="row"> {% endif %}
+    {% if forloop.last %}</div></div>{% endif %}
     {% endwith %}
 {% endfor %}
-    </div> </div>
+    </div>
 
-<br>
+<br><br>
   <div class="container">
   <div class="row justify-content-center">
   <nav aria-label="Page navigation example" style="justify-content: center;">

@@ -22,11 +22,11 @@
     class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal"><b style="color: #fff;">EducaCenter</b></h5>
     <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-lights" href="{% url 'course_list' %}">{% trans 'Browse' %}</a>
-      <a class="p-2 text-lights" href="#">{% trans 'Contact' %}</a>
-      <a class="p-2 text-lights" href="{% url "student_course_list" %}">{% trans 'Learn' %}</a>
+      <a class="p-2 text-lights" href="{% url 'course_list' %}" style="font-size: 18px;">{% trans 'Browse' %}</a>
+      <a class="p-2 text-lights" href="#" style="font-size: 18px;">{% trans 'Contact' %}</a>
+      <a class="p-2 text-lights" href="{% url "student_course_list" %}" style="font-size: 18px;">{% trans 'Learn' %}</a>
       {% if request.user.is_superuser %}
-      <a style="color: #fff; " class="p-2 text-lights" href="{% url "manage_course_list" %}">{% trans 'Manage' %}</a>
+      <a style="color: #fff; font-size: 18px;" class="p-2 text-lights" href="{% url "manage_course_list" %}">{% trans 'Manage' %}</a>
       {% endif %}
     </nav>
     {% if request.user.is_authenticated %}

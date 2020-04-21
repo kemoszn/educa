@@ -28,6 +28,9 @@ ul {
     text-align: right;
     direction:rtl;
 }
+form {
+  direction: rtl;
+}
 .card {
   text-align: right;
 }
@@ -36,8 +39,10 @@ ul {
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb"  style="font-size: 20px;">
     <li class="breadcrumb-item"><a href="{% url "course_list" %}">{% trans 'Home' %}</a></li>
-    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">{% trans 'Course Mangement' %}</a></li>
-    <li class="breadcrumb-item active" aria-current="page">{% trans 'Edit' %} "{{ course.title }}" {% trans 'modules' %}</li>
+    <li class="breadcrumb-item"><a href="{% url "manage_course_list" %}">
+    {% ifequal LANGUAGE_CODE 'ar' %} &nbsp;{% endifequal %}{% trans 'Course Mangement' %}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">
+    {% ifequal LANGUAGE_CODE 'ar' %} &nbsp;{% endifequal %}{% trans 'Edit' %} "{{ course.title }}" {% trans 'modules' %}</li>
   </ol>
 </nav>
  <br>

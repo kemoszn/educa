@@ -40,13 +40,17 @@ nav,ol .breadcrumb {
   float: right;
   direction: rtl;
 }
-.container, form {
+form {
   text-align: right;
-  direction: rtl
+  direction: rtl;
 }
+#woo {
+  direction: rtl;
+}
+
 </style>
 {% endifequal %}
-<div class="container">
+<div class="container" id="woo">
     <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
 <form action="{% url 'search_results' %}" class="form-inline my-2 my-lg-0" method="get">
@@ -58,13 +62,15 @@ nav,ol .breadcrumb {
     </div>
     </div>
     <br>
+    <div id="woo">
     {% if object_list.object_list.count == 0 %}
     {% trans 'No hits for' %} "{{ object_list.query }}" {% trans 'try a different search phrase' %}
     {% else %}
-    {% trans 'About' %} <b style="color: #007bff;">{{ object_list.object_list.count }}</b> {% trans 'search results for' %}  "{{ object_list.query }}"
+    {% trans 'About' %} <b id="woo" style="color: #007bff;">{{ object_list.object_list.count }}</b> {% trans 'search results for' %}  "{{ object_list.query }}"
     <br><br>
-    {% if object_list.object_list.count > 0 %}
-    <div class="container" style="clear:both;">
+        {% endif %}
+    </div>
+    <div class="container" id="woo" style="clear:both;">
   <div class="row" class="clearfix">
 {% for i in object_list.object_list %}
         <div class="col-sm-4">
@@ -83,8 +89,7 @@ nav,ol .breadcrumb {
 </div> 
 {% endfor %}
     </div> </div>
-    {% endif %}
-    {% endif %}
+
     
     
 {% endblock %}

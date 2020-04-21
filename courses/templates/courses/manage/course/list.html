@@ -16,6 +16,7 @@ body {
 .btn-outline-secondary {
     text-align: right;
     clear: both;
+    direction: rtl;
 }
 li {
   float: right;
@@ -41,7 +42,8 @@ nav,ol .breadcrumb {
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb"  style="font-size: 20px;">
     <li class="breadcrumb-item"><a href="{% url "course_list" %}">{% trans 'Home' %}</a></li>
-    <li class="breadcrumb-item active" aria-current="page">{% trans 'Course Management' %}</li>
+    <li class="breadcrumb-item active" aria-current="page">
+    {% ifequal LANGUAGE_CODE 'ar' %} &nbsp;{% endifequal %}{% trans 'Course Management' %}</li>
   </ol>
 </nav>
 <a href="{% url 'course_create' %}" class="btn btn-outline-secondary">+ {% trans 'Course' %}</a>
@@ -55,7 +57,7 @@ nav,ol .breadcrumb {
     <h5 class="card-title">{{ course.title }}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{ course.subject }}</h6>
     <a href="{% url "course_edit" course.id %}" class="card-link">{% trans 'Edit' %}</a>
-    &nbsp;
+    &nbsp; &nbsp; &nbsp;
     <a href="{% url "course_delete" course.id %}" class="card-link">{% trans 'Delete' %}</a>
     <a href="{% url "course_module_update" course.id %}" class="card-link">{% trans 'Edit Modules' %}</a>
     {% if course.modules.count > 0 %}
