@@ -38,9 +38,12 @@ nav,ol .breadcrumb {
   float: right;
   direction: rtl;
 }
-.container, form {
+form {
   text-align: right;
   direction: rtl
+}
+#woo {
+  direction: rtl;
 }
 </style>
 {% endifequal %}
@@ -52,11 +55,10 @@ nav,ol .breadcrumb {
   </ol>
 </nav>
 <br>
-<div class="container" style="clear:both;">
-  <div class="row" class="clearfix">
+<div class="container" id="woo">
+<div class="row">
 {% for course in object_list %}
         <div class="col-sm-6 col-md-6 col-lg-4">
-        <div class="clearfix"></div>
 <div class="card" style="width: 18rem;  overflow: hidden;">
   <img class="card-img-top" style="width: 286px; height: 180px;"
   src="{{ course.image.url }}" alt="Card image cap">
@@ -69,13 +71,15 @@ nav,ol .breadcrumb {
 </div>
 <br>
 </div> 
-<p></p>
     {% empty %}
     <p>
-        You are not enrolled in any courses yet.
-        <a href="{% url "course_list" %}">Browse courses</a>
-        to enroll in a course.
+        {% trans 'You are not enrolled in any courses yet.' %}
+        <a href="{% url "course_list" %}">{% trans 'Browse courses' %}</a>
+       {% trans 'to enroll in a course.' %}
     </p>
+    {% if forloop.counter|divisibleby:3 %}</div>&nbsp;<div class="clearfix"><div class="row"> {% endif %}
+    {% if forloop.last %}</div></div>{% endif %}
 {% endfor %}
-    </div> </div>
+    </div> 
+    </div>
     {% endblock %}

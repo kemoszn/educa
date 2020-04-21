@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-20 00:20+0200\n"
+"POT-Creation-Date: 2020-04-21 16:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,7 +96,7 @@ msgstr ""
 msgid "EducaCenter 2020. All rights reserved. "
 msgstr ""
 
-#: courses/templates/courses/course/detail.html:56
+#: courses/templates/courses/course/detail.html:59
 msgid "Courses"
 msgstr ""
 
@@ -108,39 +108,39 @@ msgstr ""
 msgid "All courses"
 msgstr ""
 
-#: courses/templates/courses/course/list.html:58
-#: courses/templates/courses/course/list.html:59
-#: courses/templates/courses/course/search_results.html:54
-#: courses/templates/courses/course/search_results.html:55
+#: courses/templates/courses/course/list.html:64
+#: courses/templates/courses/course/list.html:65
+#: courses/templates/courses/course/search_results.html:58
+#: courses/templates/courses/course/search_results.html:59
 msgid "Search"
 msgstr ""
 
-#: courses/templates/courses/course/list.html:67
+#: courses/templates/courses/course/list.html:73
 msgid "All"
 msgstr ""
 
-#: courses/templates/courses/course/list.html:85
-#: courses/templates/courses/course/search_results.html:77
-#: students/templates/students/course/list.html:64
+#: courses/templates/courses/course/list.html:90
+#: courses/templates/courses/course/search_results.html:83
+#: students/templates/students/course/list.html:67
 msgid "Instructor:"
 msgstr ""
 
-#: courses/templates/courses/course/list.html:86
-#: courses/templates/courses/course/search_results.html:78
+#: courses/templates/courses/course/list.html:91
+#: courses/templates/courses/course/search_results.html:84
 msgid "Details"
 msgstr ""
 
-#: courses/templates/courses/course/list.html:105
-#: courses/templates/courses/course/list.html:109
-#: courses/templates/courses/manage/course/list.html:79
-#: courses/templates/courses/manage/course/list.html:83
+#: courses/templates/courses/course/list.html:110
+#: courses/templates/courses/course/list.html:114
+#: courses/templates/courses/manage/course/list.html:81
+#: courses/templates/courses/manage/course/list.html:85
 msgid "Previous"
 msgstr ""
 
-#: courses/templates/courses/course/list.html:123
-#: courses/templates/courses/course/list.html:127
-#: courses/templates/courses/manage/course/list.html:97
-#: courses/templates/courses/manage/course/list.html:101
+#: courses/templates/courses/course/list.html:128
+#: courses/templates/courses/course/list.html:132
+#: courses/templates/courses/manage/course/list.html:99
+#: courses/templates/courses/manage/course/list.html:103
 msgid "Next"
 msgstr ""
 
@@ -164,19 +164,19 @@ msgstr ""
 msgid "Search Result"
 msgstr ""
 
-#: courses/templates/courses/course/search_results.html:62
+#: courses/templates/courses/course/search_results.html:67
 msgid "No hits for"
 msgstr ""
 
-#: courses/templates/courses/course/search_results.html:62
+#: courses/templates/courses/course/search_results.html:67
 msgid "try a different search phrase"
 msgstr ""
 
-#: courses/templates/courses/course/search_results.html:64
+#: courses/templates/courses/course/search_results.html:69
 msgid "About"
 msgstr ""
 
-#: courses/templates/courses/course/search_results.html:64
+#: courses/templates/courses/course/search_results.html:69
 msgid "search results for"
 msgstr ""
 
@@ -191,25 +191,25 @@ msgid "Add a new content"
 msgstr ""
 
 #: courses/templates/courses/manage/content/form.html:47
-#: courses/templates/courses/manage/course/delete.html:49
-#: courses/templates/courses/manage/course/form.html:43
-#: courses/templates/courses/manage/course/list.html:43
+#: courses/templates/courses/manage/course/delete.html:50
+#: courses/templates/courses/manage/course/form.html:46
+#: courses/templates/courses/manage/course/list.html:44
 #: courses/templates/courses/manage/module/content_list.html:47
-#: courses/templates/courses/manage/module/formset.html:38
-#: students/templates/students/course/list.html:49
+#: courses/templates/courses/manage/module/formset.html:41
+#: students/templates/students/course/list.html:52
 msgid "Home"
 msgstr ""
 
 #: courses/templates/courses/manage/content/form.html:48
-#: courses/templates/courses/manage/course/delete.html:50
-#: courses/templates/courses/manage/course/form.html:44
-#: courses/templates/courses/manage/module/content_list.html:48
-#: courses/templates/courses/manage/module/formset.html:39
+#: courses/templates/courses/manage/course/delete.html:52
+#: courses/templates/courses/manage/course/form.html:48
+#: courses/templates/courses/manage/module/content_list.html:49
+#: courses/templates/courses/manage/module/formset.html:43
 msgid "Course Mangement"
 msgstr ""
 
 #: courses/templates/courses/manage/content/form.html:57
-#: courses/templates/courses/manage/course/form.html:57
+#: courses/templates/courses/manage/course/form.html:61
 msgid "Course info"
 msgstr ""
 
@@ -218,87 +218,87 @@ msgid "Save content"
 msgstr ""
 
 #: courses/templates/courses/manage/course/delete.html:3
-#: courses/templates/courses/manage/course/delete.html:51
+#: courses/templates/courses/manage/course/delete.html:54
 msgid "Delete course"
 msgstr ""
 
-#: courses/templates/courses/manage/course/delete.html:59
+#: courses/templates/courses/manage/course/delete.html:62
 msgid "Are you sure you want to delete"
 msgstr ""
 
-#: courses/templates/courses/manage/course/delete.html:59
+#: courses/templates/courses/manage/course/delete.html:62
 msgid "?"
 msgstr ""
 
-#: courses/templates/courses/manage/course/delete.html:60
+#: courses/templates/courses/manage/course/delete.html:63
 msgid "Confirm"
 msgstr ""
 
-#: courses/templates/courses/manage/course/delete.html:66
+#: courses/templates/courses/manage/course/delete.html:69
 msgid "Cancel"
 msgstr ""
 
 #: courses/templates/courses/manage/course/form.html:6
-#: courses/templates/courses/manage/course/form.html:46
+#: courses/templates/courses/manage/course/form.html:50
 msgid "Edit course"
 msgstr ""
 
 #: courses/templates/courses/manage/course/form.html:8
-#: courses/templates/courses/manage/course/form.html:48
+#: courses/templates/courses/manage/course/form.html:52
 msgid "Create a new course"
 msgstr ""
 
-#: courses/templates/courses/manage/course/form.html:62
+#: courses/templates/courses/manage/course/form.html:66
 msgid "Save Course"
 msgstr ""
 
 #: courses/templates/courses/manage/course/list.html:3
 #: students/templates/students/course/list.html:3
-#: students/templates/students/course/list.html:50
+#: students/templates/students/course/list.html:54
 msgid "My courses"
 msgstr ""
 
-#: courses/templates/courses/manage/course/list.html:44
+#: courses/templates/courses/manage/course/list.html:46
 msgid "Course Management"
 msgstr ""
 
-#: courses/templates/courses/manage/course/list.html:47
-#: courses/templates/courses/manage/module/content_list.html:49
+#: courses/templates/courses/manage/course/list.html:49
+#: courses/templates/courses/manage/module/content_list.html:51
 msgid "Course"
 msgstr ""
 
-#: courses/templates/courses/manage/course/list.html:48
+#: courses/templates/courses/manage/course/list.html:50
 msgid "Student"
 msgstr ""
 
-#: courses/templates/courses/manage/course/list.html:49
+#: courses/templates/courses/manage/course/list.html:51
 msgid "Subject"
 msgstr ""
 
-#: courses/templates/courses/manage/course/list.html:50
+#: courses/templates/courses/manage/course/list.html:52
 msgid "Instructor"
-msgstr ""
-
-#: courses/templates/courses/manage/course/list.html:57
-#: courses/templates/courses/manage/module/content_list.html:83
-#: courses/templates/courses/manage/module/formset.html:40
-msgid "Edit"
 msgstr ""
 
 #: courses/templates/courses/manage/course/list.html:59
 #: courses/templates/courses/manage/module/content_list.html:85
+#: courses/templates/courses/manage/module/formset.html:45
+msgid "Edit"
+msgstr ""
+
+#: courses/templates/courses/manage/course/list.html:61
+#: courses/templates/courses/manage/module/content_list.html:87
 msgid "Delete"
 msgstr ""
 
-#: courses/templates/courses/manage/course/list.html:60
+#: courses/templates/courses/manage/course/list.html:62
 msgid "Edit Modules"
 msgstr ""
 
-#: courses/templates/courses/manage/course/list.html:62
+#: courses/templates/courses/manage/course/list.html:64
 msgid "Manage Content"
 msgstr ""
 
-#: courses/templates/courses/manage/course/list.html:68
+#: courses/templates/courses/manage/course/list.html:70
 msgid "You haven't created any courses yet."
 msgstr ""
 
@@ -306,39 +306,39 @@ msgstr ""
 msgid "Module"
 msgstr ""
 
-#: courses/templates/courses/manage/module/content_list.html:91
+#: courses/templates/courses/manage/module/content_list.html:93
 msgid "This module has no contents yet."
 msgstr ""
 
-#: courses/templates/courses/manage/module/content_list.html:94
+#: courses/templates/courses/manage/module/content_list.html:96
 msgid "Add new content:"
 msgstr ""
 
-#: courses/templates/courses/manage/module/content_list.html:97
+#: courses/templates/courses/manage/module/content_list.html:99
 msgid "Text"
 msgstr ""
 
-#: courses/templates/courses/manage/module/content_list.html:99
+#: courses/templates/courses/manage/module/content_list.html:101
 msgid "Image"
 msgstr ""
 
-#: courses/templates/courses/manage/module/content_list.html:101
+#: courses/templates/courses/manage/module/content_list.html:103
 msgid "Video"
 msgstr ""
 
-#: courses/templates/courses/manage/module/content_list.html:103
+#: courses/templates/courses/manage/module/content_list.html:105
 msgid "Embed Video"
 msgstr ""
 
-#: courses/templates/courses/manage/module/content_list.html:105
+#: courses/templates/courses/manage/module/content_list.html:107
 msgid "File"
 msgstr ""
 
-#: courses/templates/courses/manage/module/formset.html:40
+#: courses/templates/courses/manage/module/formset.html:45
 msgid "modules"
 msgstr ""
 
-#: courses/templates/courses/manage/module/formset.html:49
+#: courses/templates/courses/manage/module/formset.html:54
 msgid "Save modules"
 msgstr ""
 
@@ -380,8 +380,20 @@ msgstr ""
 msgid "My Courses"
 msgstr ""
 
-#: students/templates/students/course/list.html:65
+#: students/templates/students/course/list.html:68
 msgid "Go to classroom"
+msgstr ""
+
+#: students/templates/students/course/list.html:76
+msgid "You are not enrolled in any courses yet."
+msgstr ""
+
+#: students/templates/students/course/list.html:77
+msgid "Browse courses"
+msgstr ""
+
+#: students/templates/students/course/list.html:78
+msgid "to enroll in a course."
 msgstr ""
 
 #: students/templates/students/student/registration.html:5

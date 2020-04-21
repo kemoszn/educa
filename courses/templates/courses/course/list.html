@@ -77,10 +77,10 @@ form {
   {% endfor %}
   </div>
 <br><br>
-<div class="container" id="woo" style="clear:both;">
+<div class="container" id="woo">
+<div class="row">
 {% for course in page_obj %}
     {% with subject=course.subject %}
-    {% if forloop.first %}<div class="clearfix"><div class="row">{% endif %}
         <div class="col-sm-6 col-md-6 col-lg-4">
 <div class="card" style="width: 18rem;  overflow: hidden;">
   <img class="card-img-top" style="width: 286px; height: 180px;"
@@ -92,9 +92,8 @@ form {
   </div>
 </div>
 </div> 
-&nbsp;
-{% if forloop.counter|divisibleby:3 %}</div></div>&nbsp;<div class="clearfix"><div class="row"> {% endif %}
-    {% if forloop.last %}</div></div>{% endif %}
+    {% if forloop.counter|divisibleby:3 %}</div>&nbsp;<div class="row">{% endif %}
+    {% if forloop.last %}</div>{% endif %}
     {% endwith %}
 {% endfor %}
     </div>
