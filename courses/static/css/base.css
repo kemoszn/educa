@@ -281,7 +281,9 @@ ul#course-modules li:hover {
     .auto-clear .col-xs-3:nth-child(4n+1){clear:left;}
     .auto-clear .col-xs-4:nth-child(3n+1){clear:left;}
     .auto-clear .col-xs-6:nth-child(odd){clear:left;}
+    
 }
+.row:after { content: ""; display: table; clear: both; } ​ 
 .clearfix:after{
 	content: ".";
 	display: block;

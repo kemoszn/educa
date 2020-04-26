@@ -81,7 +81,7 @@ form {
 <div class="row">
 {% for course in page_obj %}
     {% with subject=course.subject %}
-        <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="col-sm-6 col-md-6 col-lg-4" style="padding: 12px;">
 <div class="card" style="width: 18rem;  overflow: hidden;">
   <img class="card-img-top" style="width: 286px; height: 180px;"
   src="{{ course.image.url }}" alt="Card image cap">
@@ -92,6 +92,7 @@ form {
   </div>
 </div>
 </div> 
+
     {% if forloop.counter|divisibleby:3 %}</div>&nbsp;<div class="row">{% endif %}
     {% if forloop.last %}</div>{% endif %}
     {% endwith %}
